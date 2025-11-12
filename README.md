@@ -1,23 +1,44 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# DogGroomingApp.com
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+A professional web application for comparing and rating top dog grooming apps on the market.
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+## 🚀 Deployment
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+This site is automatically deployed to GitHub Pages at [doggroomingapp.com](https://doggroomingapp.com) when changes are pushed to the `main` branch.
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+### How It Works
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+1. **GitHub Actions** automatically builds the Vite/React app
+2. The compiled files are deployed to GitHub Pages
+3. Your custom domain (doggroomingapp.com) points to the deployed site
 
-📄 License For Spark Template Resources 
+### Setup Requirements
+
+**GitHub Repository Settings:**
+1. Go to Settings → Pages
+2. Source: "GitHub Actions" (NOT "Deploy from branch")
+3. Custom domain: `doggroomingapp.com`
+
+**GoDaddy DNS Settings:**
+Your DNS should already be configured with:
+- CNAME record pointing `www` to `<username>.github.io`
+- A records for the apex domain pointing to GitHub's IPs
+
+## 🛠️ Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+## 📦 Building
+
+```bash
+npm run build
+```
+
+The build output will be in the `dist/` folder.
+
+## 📄 License
 
 The Spark Template files and resources from GitHub are licensed under the terms of the MIT license, Copyright GitHub, Inc.
