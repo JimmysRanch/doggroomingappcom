@@ -1,19 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DogGroomingApp.com - Compare & Rate Top Dog Grooming Apps</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="/src/main.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DogGroomingApp.com – Compare & Rate Top Dog Grooming Apps</title>
+  <meta name="description" content="DogGroomingApp.com helps salon owners compare and rate the top dog grooming software and discover the best tools to run their business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020817;
+      --card: #050816;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-soft: rgba(148, 163, 253, 0.18);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 70px rgba(15,23,42,0.78);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020817 38%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 26px 26px 24px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.06), transparent 55%),
+        radial-gradient(circle at top right, rgba(129,140,248,0.06), transparent 55%),
+        rgba(2,6,23,0.98);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,253,0.14);
+      display: grid;
+      grid-template-columns: 1.7fr 1.3fr;
+      column-gap: 26px;
+      row-gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, #38bdf8, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      font-weight: 700;
+      color: #0f172a;
+      box-shadow: 0 8px 26px rgba(15,23,42,0.7);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+    h1 {
+      font-size: 30px;
+      line-height: 1.18;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .hero-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+      font-size: 10px;
+      color: var(--accent);
+    }
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(56,189,248,0.24);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .pill span.icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .btn-primary {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #4f46e5);
+      border: none;
+      color: #020817;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 9px 26px rgba(15,23,42,0.9);
+    }
+    .btn-ghost {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.32);
+      background: rgba(2,6,23,0.96);
+      color: var(--text-main);
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .mini-note {
+      font-size: 9px;
+      color: var(--text-soft);
+    }
+    .table-card {
+      margin-top: 10px;
+      padding: 10px 11px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, var(--accent-soft), transparent),
+                  rgba(3,7,18,0.98);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      font-size: 9px;
+    }
+    .table-header,
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.6fr 0.7fr 0.9fr 0.8fr 0.9fr;
+      gap: 6px;
+      align-items: center;
+    }
+    .table-header {
+      color: var(--text-soft);
+      margin-bottom: 3px;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .table-row {
+      padding: 4px 5px;
+      border-radius: 11px;
+      background: rgba(9,9,18,0.98);
+      margin-bottom: 3px;
+    }
+    .badge-top {
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(22,163,74,0.18);
+      color: #4ade80;
+      font-size: 7px;
+      font-weight: 500;
+    }
+    .badge-soon {
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.14);
+      color: var(--accent);
+      font-size: 7px;
+      font-weight: 500;
+    }
+    .score {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 9px;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .right-card {
+      padding: 10px 11px;
+      border-radius: var(--radius-lg);
+      background: rgba(3,7,18,0.98);
+      border: 1px solid rgba(148,163,253,0.18);
+      box-shadow: 0 12px 40px rgba(15,23,42,0.82);
+      font-size: 9px;
+    }
+    .right-title {
+      font-size: 10px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--accent);
+    }
+    .right-list {
+      list-style: none;
+      display: grid;
+      gap: 3px;
+    }
+    .right-list li::before {
+      content: "•";
+      margin-right: 5px;
+      color: var(--accent);
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      margin-top: 6px;
+    }
+    .stat {
+      flex: 1;
+      padding: 5px 6px;
+      border-radius: 10px;
+      background: rgba(9,9,18,0.98);
+      border: 1px solid rgba(75,85,99,0.4);
+      text-align: left;
+    }
+    .stat-label {
+      font-size: 7px;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+    .stat-value {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    @media (max-width: 880px) {
+      body { padding: 10px; }
+      .shell {
+        display: flex;
+        flex-direction: column;
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-</body>
+  <div class="shell">
+    <div>
+      <div class="brand">
+        <div class="brand-logo">DG</div>
+        <div class="brand-text">
+          <div class="brand-title">DogGroomingApp.com</div>
+          <div class="brand-sub">Compare &amp; rate top dog grooming software</div>
+        </div>
+      </div>
 
+      <h1>See which dog grooming apps actually perform before you commit.</h1>
+      <p class="hero-sub">
+        A clean, unbiased comparison of modern grooming &amp; salon platforms — pricing, features, support, real-world workflows — so you can pick the right system for your shop in minutes.
+      </p>
+
+      <div class="pill-row">
+        <div class="pill"><span class="icon"></span>Independent comparison</div>
+        <div class="pill"><span class="icon"></span>No sign-up required</div>
+        <div class="pill"><span class="icon"></span>Built for grooming salons</div>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn-primary">View the Top 5 Grooming Apps</button>
+        <button class="btn-ghost">
+          Download full comparison (PDF)
+          <span>↗</span>
+        </button>
+      </div>
+
+      <div class="mini-note">
+        Coming soon: in-depth reviews, side-by-side feature matrix, and real salon setups.
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <div>Platform</div>
+          <div>Focus</div>
+          <div>Pricing</div>
+          <div>Ease of Use</div>
+          <div>Our Snapshot</div>
+        </div>
+
+        <div class="table-row">
+          <div>Scruffy Butts</div>
+          <div>Grooming-first</div>
+          <div>$</div>
+          <div class="score">9.6/10</div>
+          <div><span class="badge-top">Early Leader</span></div>
+        </div>
+
+        <div class="table-row">
+          <div>MoeGoe</div>
+          <div>Scheduling</div>
+          <div>$$</div>
+          <div>8.4/10</div>
+          <div>Solid, missing depth</div>
+        </div>
+
+        <div class="table-row">
+          <div>DaySmart</div>
+          <div>Multi-industry</div>
+          <div>$$$</div>
+          <div>8.1/10</div>
+          <div>Powerful, heavier setup</div>
+        </div>
+
+        <div class="table-row">
+          <div>Pawcasso</div>
+          <div>Mobile groomers</div>
+          <div>$</div>
+          <div>8.7/10</div>
+          <div>Great on the go</div>
+        </div>
+
+        <div class="table-row">
+          <div>Your App?</div>
+          <div>—</div>
+          <div>—</div>
+          <div>—</div>
+          <div><span class="badge-soon">Submit for review</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="right-card">
+        <div class="right-title">What you’ll find here</div>
+        <ul class="right-list">
+          <li>Real feature breakdowns for grooming shops (not generic salons).</li>
+          <li>Transparent pricing snapshots with no fluff.</li>
+          <li>Pros &amp; cons for solo groomers vs. multi-staff salons.</li>
+          <li>Workflows for check-in, photos, notes, tipping, commissions, and more.</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-label">Vetted platforms</div>
+            <div class="stat-value">5+</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Salon-focused checks</div>
+            <div class="stat-value">40+</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Launch updates</div>
+            <div class="stat-value">2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-title">Coming soon on DogGroomingApp.com</div>
+        <ul class="right-list">
+          <li>Interactive comparison tool tailored to your salon size.</li>
+          <li>Template setups you can copy for staff, services, and pricing.</li>
+          <li>Deep-dive review of Scruffy Butts as a pro-grade grooming platform.</li>
+          <li>Email/SMS templates and checklists for smooth migrations.</li>
+        </ul>
+      </div>
+
+      <div class="right-card">
+        <div class="mini-note">
+          Want your software listed or updated here? Reach out via the contact link that will appear in our next release.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
