@@ -27,7 +27,7 @@ export function HowItWorks() {
           How It Works
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Finding the right grooming app for your dog has never been easier
+          Finding the right grooming app for your business has never been easier
         </p>
       </div>
 
