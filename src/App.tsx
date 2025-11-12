@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { groomingApps } from '@/lib/data'
 import { GroomingApp, SortOption, PriceFilter, PlatformFilter } from '@/lib/types'
 import { Hero } from '@/components/Hero'
@@ -12,6 +12,7 @@ import { FAQ } from '@/components/FAQ'
 import { Footer } from '@/components/Footer'
 import { BackToTop } from '@/components/BackToTop'
 import { Toaster } from '@/components/ui/sonner'
+import { toast } from 'sonner'
 import { motion } from 'framer-motion'
 
 function App() {
@@ -21,6 +22,13 @@ function App() {
   const [priceFilter, setPriceFilter] = useState<PriceFilter>('all')
   const [platformFilter, setPlatformFilter] = useState<PlatformFilter>('all')
   const [minRating, setMinRating] = useState<number>(0)
+
+  useEffect(() => {
+    toast('Welcome to DogGroomingApp.com!', {
+      description: 'Find the perfect grooming app for your furry friend.',
+      duration: 4000,
+    })
+  }, [])
 
   const filteredAndSortedApps = useMemo(() => {
     let filtered = [...groomingApps]
