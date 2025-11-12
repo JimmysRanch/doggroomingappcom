@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion'
-import { Shield, Users, Star } from '@phosphor-icons/react'
+import { Shield, Users, Star, CaretDown } from '@phosphor-icons/react'
 
 export function Hero() {
+  const scrollToApps = () => {
+    const element = document.getElementById('apps')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
@@ -66,6 +73,17 @@ export function Hero() {
               </div>
             </motion.div>
           </div>
+
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            onClick={scrollToApps}
+            className="mt-12 flex items-center justify-center gap-2 mx-auto text-primary-foreground/90 hover:text-primary-foreground transition-colors group"
+          >
+            <span className="text-sm font-medium">Browse Apps</span>
+            <CaretDown className="w-5 h-5 animate-bounce group-hover:animate-none" weight="bold" />
+          </motion.button>
         </motion.div>
       </div>
     </div>

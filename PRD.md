@@ -1,135 +1,130 @@
 # Planning Guide
 
-A professional, authoritative comparison platform that helps dog owners discover and evaluate the best dog grooming apps through expert ratings, detailed reviews, and side-by-side feature comparisons.
+A comprehensive one-page comparison platform that helps dog owners find and evaluate the perfect grooming app through expert reviews, interactive filtering, and detailed feature breakdowns.
 
 **Experience Qualities**:
-1. **Trustworthy** - The platform should feel like an established authority with credible ratings and transparent methodology
-2. **Clarity** - Information should be presented in a scannable, organized format that makes comparison effortless
-3. **Professional** - Design conveys expertise and polish through refined typography, balanced layouts, and sophisticated color choices
+1. **Trustworthy** - Clear expert ratings, verified reviews, and transparent comparisons build confidence in decision-making
+2. **Effortless** - Intuitive filtering and sorting allow users to quickly find apps matching their specific needs without overwhelming complexity
+3. **Comprehensive** - Rich detail views and side-by-side comparisons provide all necessary information without requiring external research
 
 **Complexity Level**: Light Application (multiple features with basic state)
-  - The site features app listings, filtering, detailed comparison views, and rating displays with persistent state for user preferences
+  - The site includes interactive filtering, sorting, comparison features, and detailed modals while maintaining a single-page experience
 
 ## Essential Features
 
-### App Listings Grid
-- **Functionality**: Display top dog grooming apps with ratings, key features, and pricing
-- **Purpose**: Provide quick overview of available options for immediate comparison
-- **Trigger**: Page loads with default view of all apps
-- **Progression**: Page loads → Grid displays apps with thumbnail, name, rating, price → User scans options → Clicks for details
-- **Success criteria**: All apps display correctly with accurate ratings, clear hierarchy, and responsive grid layout
+### Interactive App Filtering
+- **Functionality**: Filter apps by price type (free/freemium/paid), platform (iOS/Android/Web), and rating threshold
+- **Purpose**: Help users quickly narrow down options to apps that match their requirements and constraints
+- **Trigger**: User interacts with filter controls in a sticky sidebar or filter panel
+- **Progression**: User selects filter criteria → App list updates in real-time → User sees filtered count → User can clear filters to reset
+- **Success criteria**: Filtering is instant, results are accurate, and users can combine multiple filters
 
-### Detailed App Reviews
-- **Functionality**: Expandable/modal view showing comprehensive app analysis with pros, cons, features, and expert verdict
-- **Trigger**: User clicks on an app card or "View Details" button
-- **Progression**: User clicks app → Modal/detail view opens → User reads review sections → Sees feature breakdown → Views rating criteria → Closes to return to grid
-- **Success criteria**: Detailed information is comprehensive, well-organized, and easy to navigate
+### Smart Sorting Options
+- **Functionality**: Sort apps by rating (highest first), price (low to high, high to low), or popularity (review count)
+- **Purpose**: Allow users to prioritize apps based on what matters most to them
+- **Trigger**: User selects sort option from dropdown or toggle buttons
+- **Progression**: User clicks sort option → List reorders with smooth animation → Selected sort is visually indicated
+- **Success criteria**: Sorting is smooth, selection state is clear, and results match expected order
 
-### Filter & Sort System
-- **Functionality**: Filter apps by platform (iOS/Android), price range, features, and sort by rating or price
-- **Trigger**: User interacts with filter controls in sidebar or top bar
-- **Progression**: User selects filter criteria → Grid updates instantly → Results show filtered apps → User can clear filters → Grid resets
-- **Success criteria**: Filters work accurately, provide instant feedback, and maintain state
+### Detailed App Comparison View
+- **Functionality**: View comprehensive details about each app including ratings breakdown, pros/cons, features, and expert verdict
+- **Purpose**: Provide all information needed to make an informed decision without leaving the page
+- **Trigger**: User clicks "View Details" on any app card
+- **Progression**: Click button → Modal slides in with smooth animation → User scrolls through detailed info → User closes modal to return
+- **Success criteria**: Modal loads instantly, information is well-organized, and closing returns user to exact scroll position
 
-### Rating Comparison
-- **Functionality**: Display detailed rating breakdown across multiple criteria (features, ease of use, value, customer support)
-- **Purpose**: Provide transparent insight into how ratings are calculated
-- **Trigger**: Visible in app cards and detailed views
-- **Progression**: User views rating → Sees overall score → Expands to view category breakdown → Understands rating methodology
-- **Success criteria**: Rating system is clear, visually appealing, and builds trust
+### Smooth Section Navigation
+- **Functionality**: Quick navigation between Hero, Apps, How It Works, Why Choose Us, and FAQ sections
+- **Purpose**: Enhance one-page browsing experience with easy section jumping
+- **Trigger**: User clicks navigation links or scrolls naturally
+- **Progression**: Click nav link → Smooth scroll to section → Active section highlights in nav
+- **Success criteria**: Scrolling is smooth, current section is always indicated, and navigation is accessible on mobile
 
 ## Edge Case Handling
-- **Loading States**: Show skeleton loaders for app cards while data initializes
-- **Missing Data**: Gracefully handle apps with incomplete information (no pricing, partial ratings)
-- **Mobile View**: Ensure responsive grid layouts adapt seamlessly to mobile devices
-- **Empty State**: If no apps exist yet, show placeholder encouraging content addition
-- **Link Placeholders**: Footer and navigation links use hash anchors as placeholders for future page implementations
+
+- **No Results from Filters** - Show friendly empty state with suggestion to adjust filters, display count of filtered-out apps
+- **Mobile Filter Visibility** - Filters collapse into slide-out drawer on mobile devices with clear filter indicator badge
+- **Long App Descriptions** - Truncate with "..." on cards, full text visible in detail modal
+- **Rapid Filter Changes** - Debounce or use immediate state updates to prevent performance issues
+- **Modal Scroll Position** - Preserve main page scroll position when opening/closing modals
 
 ## Design Direction
-The design should feel professional, trustworthy, and established—evoking the credibility of Consumer Reports or Wirecutter with a modern, clean interface that prioritizes readability and decision-making efficiency over flashy elements.
+
+The design should feel professional, trustworthy, and calming—like a reliable guide rather than a pushy salesperson. It should project expertise through clean typography and organized information hierarchy while maintaining approachability through soft colors and friendly micro-interactions. The interface should be minimal yet rich with information, avoiding clutter while ensuring every data point is easily discoverable.
 
 ## Color Selection
-Complementary color scheme that balances professional blue tones (trust, authority) with warm accent colors (approachability, friendliness)
 
-- **Primary Color**: Deep Professional Blue (oklch(0.45 0.12 250)) - Communicates trust, authority, and expertise; used for headers, primary CTAs, and key interactive elements
-- **Secondary Colors**: Soft Slate Gray (oklch(0.55 0.02 250)) for supporting text and subtle backgrounds; Warm White (oklch(0.98 0.005 85)) for card backgrounds
-- **Accent Color**: Vibrant Orange (oklch(0.68 0.17 45)) - Draws attention to ratings, featured badges, and important CTAs
+Analogous color scheme (adjacent colors on the color wheel) creating a harmonious, trustworthy feel with blues and purples that evoke professionalism and pet care warmth.
+
+- **Primary Color**: Deep indigo blue (oklch(0.45 0.12 250)) - Communicates trust, professionalism, and reliability
+- **Secondary Colors**: Muted slate blue (oklch(0.55 0.02 250)) for supporting elements and hover states
+- **Accent Color**: Warm amber (oklch(0.68 0.17 45)) - Draws attention to CTAs and important ratings, adds warmth and approachability
 - **Foreground/Background Pairings**:
-  - Background (White oklch(1 0 0)): Slate text (oklch(0.25 0.02 250)) - Ratio 11.8:1 ✓
-  - Card (Warm White oklch(0.98 0.005 85)): Slate text (oklch(0.25 0.02 250)) - Ratio 11.2:1 ✓
-  - Primary (Deep Blue oklch(0.45 0.12 250)): White text (oklch(1 0 0)) - Ratio 7.8:1 ✓
-  - Secondary (Soft Slate oklch(0.55 0.02 250)): White text (oklch(1 0 0)) - Ratio 5.2:1 ✓
-  - Accent (Vibrant Orange oklch(0.68 0.17 45)): Dark Slate text (oklch(0.2 0.02 250)) - Ratio 8.5:1 ✓
-  - Muted (Light Gray oklch(0.95 0.005 250)): Medium Slate text (oklch(0.45 0.02 250)) - Ratio 6.8:1 ✓
+  - Background (White oklch(1 0 0)): Dark blue-gray text (oklch(0.25 0.02 250)) - Ratio 11.2:1 ✓
+  - Card (Soft cream oklch(0.98 0.005 85)): Dark blue-gray text (oklch(0.25 0.02 250)) - Ratio 10.8:1 ✓
+  - Primary (Deep indigo oklch(0.45 0.12 250)): White text (oklch(1 0 0)) - Ratio 8.4:1 ✓
+  - Secondary (Muted slate oklch(0.55 0.02 250)): White text (oklch(1 0 0)) - Ratio 5.2:1 ✓
+  - Accent (Warm amber oklch(0.68 0.17 45)): Dark blue-gray text (oklch(0.2 0.02 250)) - Ratio 7.1:1 ✓
+  - Muted (Light gray oklch(0.95 0.005 250)): Muted foreground (oklch(0.45 0.02 250)) - Ratio 6.8:1 ✓
 
 ## Font Selection
-Typography should convey professionalism and authority while maintaining excellent readability for extended content consumption; Inter for its modern, neutral professionalism paired with clarity at all sizes.
+
+Inter is chosen for its exceptional legibility at all sizes, professional appearance, and extensive weight range that supports clear typographic hierarchy from headlines to small UI text.
 
 - **Typographic Hierarchy**:
-  - H1 (Page Title): Inter Bold/48px/tight letter spacing/-0.02em
-  - H2 (Section Headers): Inter SemiBold/32px/tight/-0.01em
-  - H3 (App Names): Inter SemiBold/24px/normal/0em
-  - Body (Descriptions): Inter Regular/16px/relaxed/line-height 1.6
-  - Small (Metadata): Inter Medium/14px/normal/line-height 1.4
-  - Rating Numbers: Inter Bold/20px/tight
+  - H1 (Hero Title): Inter Bold/56px (3.5rem)/Tight letter spacing (-0.02em)
+  - H2 (Section Headers): Inter Bold/36px (2.25rem)/Tight letter spacing (-0.01em)
+  - H3 (Card Titles): Inter Semibold/20px (1.25rem)/Normal spacing
+  - Body (Descriptions): Inter Regular/16px (1rem)/Relaxed line height (1.6)
+  - Small (Meta Info): Inter Medium/14px (0.875rem)/Normal line height (1.5)
+  - Tiny (Badges): Inter Semibold/12px (0.75rem)/Wide letter spacing (0.02em)
 
 ## Animations
-Animations should be subtle and purposeful, enhancing usability through smooth state transitions and gentle micro-interactions that feel polished without drawing excessive attention.
 
-- **Purposeful Meaning**: Smooth card hover elevations suggest interactivity; rating number count-ups on load create engagement; filter updates transition smoothly to indicate live results
-- **Hierarchy of Movement**: Primary focus on card interactions (hover, click), secondary on filter toggles and modal transitions, minimal decorative motion
+Animations should feel purposeful and snappy—subtle enough to not distract but present enough to guide attention and provide satisfying feedback. The overall motion language should be crisp and responsive, reflecting the efficiency users expect from a comparison tool.
+
+- **Purposeful Meaning**: Use subtle slide-up animations on cards to create a sense of content loading naturally; filter changes trigger smooth list reordering to show cause-and-effect; modal transitions use scale + fade to maintain spatial context
+- **Hierarchy of Movement**: Hero elements animate on load (200ms delay cascade); app cards animate on scroll into view; filter interactions provide immediate 100ms feedback; modal dialogs are most prominent with 300ms enter/exit transitions
 
 ## Component Selection
 
-- **Components**:
-  - Card (shadcn) - App listing containers with custom hover states and shadow depth
-  - Badge (shadcn) - Platform indicators, featured tags, price labels
-  - Dialog (shadcn) - Detailed app review modal with scroll area
-  - Progress (shadcn) - Rating category bars, modified with accent colors
-  - Progress (shadcn) - Rating category bars, modified with accent colors
-  - ScrollArea (shadcn) - Smooth scrolling in modal content
-  - ScrollArea (shadcn) - Smooth scrolling in modal contentrs
-  - Accordion (shadcn) - FAQ expandable questions and answers
-- **Customizations**:
-- **Customizations**:onent with gradient background and trust indicators
-  - Hero section component with gradient background and trust indicators
-  - App card component with hover state and elevation changes
-  - App card component with hover state and elevation changes
-  - WhyChooseUs component highlighting trust factors in card grid
-  - WhyChooseUs component highlighting trust factors in card grid
-  - Footer component with link sections and branding
-  - Footer component with link sections and branding
-- **States**:
-- **States**:ow + border accent on hover, slight scale on active
-  - Cards: Subtle shadow on default, elevated shadow + border accent on hover, slight scale on active
-  - Filters: Clear visual distinction between selected/unselected with checkmarks
-  - Filters: Clear visual distinction between selected/unselected with checkmarks
-
-
-  - Star (filled/outline) for ratings in hero and app cards
-  - Star (filled/outline) for ratingsircle for How It Works steps
-  - Shield for trust/verification features
-  - Users for community/user count indicators
-  - DeviceMobile, Globe for platform indicators
-  - DeviceMobile, Globe for platform indicators
-  - Heart for footer branding
-  - Users for user count/popularity
-  - Shield for trust/security features
-  - Page padding: px-6 md:px-12 lg:px-24
-  - Section gaps: gap-16 md:gap-24
-  - Page padding: px-6 md:px-12 lg:px-24
-  - Section gaps: gap-16 md:gap-24
-  - Card grid gaps: gap-6
-
-- **Mobile**:
-  - Hero title scales from 32px mobile to 48px desktop
-  - App grid: 1 column mobile, 2 columns tablet (md), 3 columns desktop (lg)
-  - Hero title scales from 32px mobile to 48px desktop
-  - How It Works section stacks vertically on mobile with centered icons
-  - Detailed view modal adapts to smaller screens with proper scrolling
-  - How It Works section stacks vertically on mobile with centered icons
-  - Why Choose Us cards stack in single column on mobile
-  - Footer columns stack vertically on mobile with proper spacing
-
-  - Why Choose Us cards stack in single column on mobile
-  - Footer columns stack vertically on mobile with proper spacing
+- **Components**: 
+  - Dialog (modal for app details with ScrollArea for long content)
+  - Card (app listings with hover states)
+  - Button (primary CTAs with accent color, secondary for filters)
+  - Badge (featured tags, platform indicators, price type)
+  - Select/Dropdown Menu (sort options)
+  - Sheet (mobile filter drawer)
+  - Separator (visual breaks between sections)
+  - Accordion (FAQ section)
+  - Tabs (potential alternate view modes)
+  
+- **Customizations**: 
+  - Filter toggle buttons with active state highlighting
+  - Star rating display component with partial stars
+  - Rating bar component with animated progress fills
+  - Platform badge component with iOS/Android/Web icons
+  
+- **States**: 
+  - Buttons: Default, Hover (subtle lift + shadow), Active (pressed down), Disabled (reduced opacity)
+  - Cards: Rest, Hover (lift -4px + shadow increase), Featured (border accent + badge)
+  - Filters: Inactive (muted), Active (primary color + bold), Hover (background change)
+  - Inputs: Empty, Filled, Focused (ring + border color), Error (red accent)
+  
+- **Icon Selection**: 
+  - @phosphor-icons: Star (ratings), Funnel (filters), SortAscending/SortDescending (sort), Check/X (pros/cons), DeviceMobile/Desktop/Globe (platforms), Shield (verified), Users (community), ChevronDown (dropdowns)
+  
+- **Spacing**: 
+  - Container padding: px-6 md:px-12 lg:px-24
+  - Section spacing: py-16 md:py-24
+  - Card padding: p-6
+  - Element gaps: gap-2 (small), gap-4 (medium), gap-6 (large)
+  - Grid gaps: gap-6 (cards)
+  
+- **Mobile**: 
+  - Hero text scales from text-4xl to text-6xl
+  - Grid changes from 1 column to md:2 lg:3 columns
+  - Filters move from sidebar to bottom sheet drawer
+  - Navigation condenses to hamburger menu (if nav is added)
+  - Stat cards stack vertically on mobile
+  - Modal takes full screen on small devices with max-h-[90vh]

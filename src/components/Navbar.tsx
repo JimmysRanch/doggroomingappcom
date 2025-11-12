@@ -71,7 +71,7 @@ export function Navbar() {
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X /> : <List />}
           </Button>
         </div>
       </div>
