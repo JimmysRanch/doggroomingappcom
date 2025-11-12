@@ -85,49 +85,51 @@ Animations should be subtle and purposeful, enhancing usability through smooth s
   - Card (shadcn) - App listing containers with custom hover states and shadow depth
   - Badge (shadcn) - Platform indicators, featured tags, price labels
   - Dialog (shadcn) - Detailed app review modal with scroll area
-  - Separator (shadcn) - Visual dividers between sections and footer
   - Progress (shadcn) - Rating category bars, modified with accent colors
-  - Button (shadcn) - CTAs with primary/secondary variants
+  - Progress (shadcn) - Rating category bars, modified with accent colors
   - ScrollArea (shadcn) - Smooth scrolling in modal content
+  - ScrollArea (shadcn) - Smooth scrolling in modal contentrs
   - Accordion (shadcn) - FAQ expandable questions and answers
-  
 - **Customizations**:
+- **Customizations**:onent with gradient background and trust indicators
   - Hero section component with gradient background and trust indicators
-  - Rating display component showing star visualization with numerical score
   - App card component with hover state and elevation changes
-  - HowItWorks component with three-step process visualization
+  - App card component with hover state and elevation changes
   - WhyChooseUs component highlighting trust factors in card grid
-  - FAQ component with accordion for common questions
+  - WhyChooseUs component highlighting trust factors in card grid
   - Footer component with link sections and branding
-
+  - Footer component with link sections and branding
 - **States**:
+- **States**:ow + border accent on hover, slight scale on active
   - Cards: Subtle shadow on default, elevated shadow + border accent on hover, slight scale on active
-  - Buttons: Solid primary color default, darker on hover, pressed state with scale
   - Filters: Clear visual distinction between selected/unselected with checkmarks
-  - Modal: Smooth fade-in background overlay, slide-up content animation
+  - Filters: Clear visual distinction between selected/unselected with checkmarks
 
-- **Icon Selection**:
+
   - Star (filled/outline) for ratings in hero and app cards
-  - MagnifyingGlass, ChartBar, CheckCircle for How It Works steps
+  - Star (filled/outline) for ratingsircle for How It Works steps
   - Shield for trust/verification features
-  - Scales for unbiased/fairness indicators
-  - ChartLineUp for updates and data-driven approach
   - Users for community/user count indicators
   - DeviceMobile, Globe for platform indicators
-  - CurrencyDollar for pricing
+  - DeviceMobile, Globe for platform indicators
   - Heart for footer branding
-
-- **Spacing**:
+  - Users for user count/popularity
+  - Shield for trust/security features
+  - Page padding: px-6 md:px-12 lg:px-24
+  - Section gaps: gap-16 md:gap-24
   - Page padding: px-6 md:px-12 lg:px-24
   - Section gaps: gap-16 md:gap-24
   - Card grid gaps: gap-6
-  - Card internal padding: p-6
-  - Element spacing within cards: gap-4
 
 - **Mobile**:
   - Hero title scales from 32px mobile to 48px desktop
   - App grid: 1 column mobile, 2 columns tablet (md), 3 columns desktop (lg)
+  - Hero title scales from 32px mobile to 48px desktop
+  - How It Works section stacks vertically on mobile with centered icons
   - Detailed view modal adapts to smaller screens with proper scrolling
   - How It Works section stacks vertically on mobile with centered icons
+  - Why Choose Us cards stack in single column on mobile
+  - Footer columns stack vertically on mobile with proper spacing
+
   - Why Choose Us cards stack in single column on mobile
   - Footer columns stack vertically on mobile with proper spacing
