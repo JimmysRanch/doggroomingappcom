@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { groomingApps } from '@/lib/data'
 import { GroomingApp, SortOption, PriceFilter, PlatformFilter } from '@/lib/types'
+import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
 import { AppCard } from '@/components/AppCard'
 import { AppDetailModal } from '@/components/AppDetailModal'
@@ -90,6 +91,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       <Hero />
 
       <main className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16" id="apps">
