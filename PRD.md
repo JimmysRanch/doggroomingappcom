@@ -39,11 +39,11 @@ A professional, authoritative comparison platform that helps dog owners discover
 - **Success criteria**: Rating system is clear, visually appealing, and builds trust
 
 ## Edge Case Handling
-- **No Results Found**: Display helpful message with suggestions to adjust filters when no apps match criteria
 - **Loading States**: Show skeleton loaders for app cards while data initializes
 - **Missing Data**: Gracefully handle apps with incomplete information (no pricing, partial ratings)
-- **Mobile View**: Ensure filters collapse to drawer/dropdown on mobile devices
+- **Mobile View**: Ensure responsive grid layouts adapt seamlessly to mobile devices
 - **Empty State**: If no apps exist yet, show placeholder encouraging content addition
+- **Link Placeholders**: Footer and navigation links use hash anchors as placeholders for future page implementations
 
 ## Design Direction
 The design should feel professional, trustworthy, and established—evoking the credibility of Consumer Reports or Wirecutter with a modern, clean interface that prioritizes readability and decision-making efficiency over flashy elements.
@@ -85,20 +85,20 @@ Animations should be subtle and purposeful, enhancing usability through smooth s
   - Card (shadcn) - App listing containers with custom hover states and shadow depth
   - Badge (shadcn) - Platform indicators, featured tags, price labels
   - Dialog (shadcn) - Detailed app review modal with scroll area
-  - Select (shadcn) - Sort dropdown with custom styling
-  - Checkbox (shadcn) - Filter options for features and platforms
-  - Separator (shadcn) - Visual dividers between sections
+  - Separator (shadcn) - Visual dividers between sections and footer
   - Progress (shadcn) - Rating category bars, modified with accent colors
   - Button (shadcn) - CTAs with primary/secondary variants
   - ScrollArea (shadcn) - Smooth scrolling in modal content
-  - Accordion (shadcn) - FAQ or expandable feature lists
+  - Accordion (shadcn) - FAQ expandable questions and answers
   
 - **Customizations**:
   - Hero section component with gradient background and trust indicators
   - Rating display component showing star visualization with numerical score
-  - Comparison table component for side-by-side feature breakdown
-  - Filter sidebar component with collapsible categories
-  - App card component with hover state showing quick features preview
+  - App card component with hover state and elevation changes
+  - HowItWorks component with three-step process visualization
+  - WhyChooseUs component highlighting trust factors in card grid
+  - FAQ component with accordion for common questions
+  - Footer component with link sections and branding
 
 - **States**:
   - Cards: Subtle shadow on default, elevated shadow + border accent on hover, slight scale on active
@@ -107,14 +107,15 @@ Animations should be subtle and purposeful, enhancing usability through smooth s
   - Modal: Smooth fade-in background overlay, slide-up content animation
 
 - **Icon Selection**:
-  - Star (filled/outline) for ratings
-  - FunnelSimple for filters
-  - SortAscending/SortDescending for sort controls
-  - CheckCircle for pros, XCircle for cons
+  - Star (filled/outline) for ratings in hero and app cards
+  - MagnifyingGlass, ChartBar, CheckCircle for How It Works steps
+  - Shield for trust/verification features
+  - Scales for unbiased/fairness indicators
+  - ChartLineUp for updates and data-driven approach
+  - Users for community/user count indicators
   - DeviceMobile, Globe for platform indicators
   - CurrencyDollar for pricing
-  - Users for user count/popularity
-  - Shield for trust/security features
+  - Heart for footer branding
 
 - **Spacing**:
   - Page padding: px-6 md:px-12 lg:px-24
@@ -125,7 +126,8 @@ Animations should be subtle and purposeful, enhancing usability through smooth s
 
 - **Mobile**:
   - Hero title scales from 32px mobile to 48px desktop
-  - Filter sidebar becomes bottom sheet drawer on mobile
   - App grid: 1 column mobile, 2 columns tablet (md), 3 columns desktop (lg)
-  - Detailed view switches from modal to full-screen sheet on mobile
-  - Sort controls move to sticky header on mobile scroll
+  - Detailed view modal adapts to smaller screens with proper scrolling
+  - How It Works section stacks vertically on mobile with centered icons
+  - Why Choose Us cards stack in single column on mobile
+  - Footer columns stack vertically on mobile with proper spacing
