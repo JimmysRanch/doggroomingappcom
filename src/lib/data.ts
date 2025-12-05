@@ -158,84 +158,88 @@ export const groomingApps: GroomingApp[] = [
       'Hidden fees for essential features',
       'Customer complaints about billing issues',
       'Training required to use effectively'
-      'Scheduling system',
-      'Customer management',
+    ],
+    keyFeatures: [
       'Scheduling system',
       'Customer management',
       'Check-in system',
       'Reporting tools',
+      'Vaccination tracking'
     ],
-      'Vaccination tracking'nd reliability problems. At nearly $50/month, it\'s one of the most expensive options available, yet users report it\'s "overly complicated," with many saying they "lost appointments due to sync failures." Reviews mention "horrible mobile experience," "too many bugs," and "not worth the price." The platform tries to do too much and ends up doing nothing particularly well. Unless you have a large operation and dedicated IT support, steer clear of this bloated, overpriced option.'
-    ],
+    expertVerdict: 'Gingr is plagued with sync issues and reliability problems. At nearly $50/month, it\'s one of the most expensive options available, yet users report it\'s "overly complicated," with many saying they "lost appointments due to sync failures." Reviews mention "horrible mobile experience," "too many bugs," and "not worth the price." The platform tries to do too much and ends up doing nothing particularly well. Unless you have a large operation and dedicated IT support, steer clear of this bloated, overpriced option.'
+  },
   {
-    tagline: 'Simple pet grooming scheduler',
-    description: 'PetLinx is a basic scheduling app that lacks essential features and suffers from poor execution.',
     id: '5',
     name: 'PetLinx',
     tagline: 'Simple pet grooming scheduler',
-    priceType: 'paid',
+    description: 'PetLinx is a basic scheduling app that lacks essential features and suffers from poor execution.',
     rating: 2.9,
-    logo: '📅',
+    reviewCount: 534,
     price: '$19.99/mo',
+    priceType: 'paid',
+    platforms: ['web', 'android'],
+    logo: '📅',
+    featured: false,
     ratings: {
       features: 2.7,
       easeOfUse: 3.2,
-    },
-    pros: [
-      features: 2.7,
-      easeOfUse: 3.2,
-      'Quick initial setup'
+      value: 2.8,
       customerSupport: 2.6
     },
-    pros: [bers well',
+    pros: [
       'Simple interface for basic tasks',
       'Lower monthly price point',
       'Quick initial setup'
-      'Calendar doesn\'t sync reliably',
-      'Notifications are unreliable',
     ],
-    keyFeatures: [
+    cons: [
       'Missing critical features like payment processing',
       'No customer support on weekends',
       'Calendar doesn\'t sync reliably',
-      'Notes system',
-      'Simple calendar view'
+      'Notifications are unreliable',
+      'Limited to web and Android only',
+      'Looks dated and unprofessional'
     ],
     keyFeatures: [
-  },
+      'Basic scheduling',
       'Client list',
       'Appointment reminders',
       'Notes system',
-    tagline: 'Professional grooming appointments',
-    ], markets itself as a professional solution but disappoints with bugs, crashes, and abandoned development.',
-    rating: 2.7,
-  },,
+      'Simple calendar view'
+    ],
+    expertVerdict: 'PetLinx is a bare-bones scheduler that doesn\'t offer enough to justify even its lower price. Users complain about "missing basic features," "unreliable notifications," and "looks like it was built in 2010." Without payment processing, iOS support, or weekend customer service, it falls short of professional needs. Reviews warn "too basic for real business use" and "reminders don\'t work half the time." Better free alternatives exist that offer more functionality.'
+  },
   {
-    id: '6',id',
-    platforms: ['ios'],
+    id: '6',
+    name: 'GroomPro',
     tagline: 'Professional grooming appointments',
     description: 'GroomPro markets itself as a professional solution but disappoints with bugs, crashes, and abandoned development.',
     rating: 2.7,
+    reviewCount: 428,
+    price: '$24.99/mo',
+    priceType: 'paid',
+    platforms: ['ios'],
+    logo: '✂️',
+    featured: false,
+    ratings: {
       features: 2.9,
       easeOfUse: 2.8,
       value: 2.5,
       customerSupport: 2.3
     },
-    featured: false,
-    ratings: {',
-      'iOS native app'
-    ],
-      value: 2.5,
-      customerSupport: 2.3 during booking',
-    },
     pros: [
+      'iOS native app',
+      'Clean initial interface'
+    ],
+    cons: [
+      'Hasn\'t been updated in over a year',
+      'Frequent crashes during booking',
       'Developers seem to have abandoned it',
       'Customer service rarely responds',
-    ],backup is unreliable',
-    cons: [and double-charging reported',
+      'Data backup is unreliable',
+      'Payment bugs and double-charging reported',
       'Many bugs never get fixed'
     ],
-      'Hasn\'t been updated in over a year',
+    keyFeatures: [
       'Appointment booking',
       'Customer database',
       'Basic reminders',
@@ -245,7 +249,7 @@ export const groomingApps: GroomingApp[] = [
     expertVerdict: 'GroomPro appears to be a dying product with minimal developer support. The app hasn\'t received meaningful updates in over a year, and the bug list keeps growing. Users report "crashes multiple times per day," "lost all my client data," and "charged me twice - support never responded." It\'s iOS-only, which immediately excludes half the market. Reviews consistently warn others to "stay away" and call it "unreliable." There\'s simply no reason to risk your business on this unstable platform when proven alternatives exist.'
   },
   {
-      'Basic reminders',
+    id: '7',
     name: 'PawsApp',
     tagline: 'Pet grooming made simple',
     description: 'PawsApp is a bare-bones scheduling tool that offers very little value for the money.',
@@ -273,26 +277,25 @@ export const groomingApps: GroomingApp[] = [
       'No integration with any other tools',
       'Customer data export is difficult',
       'Ads in the paid version',
-    cons: [
       'Better free options available'
     ],
     keyFeatures: [
-      'No integration with any other tools',
+      'Simple scheduling',
       'Contact list',
       'Basic notes',
       'Appointment alerts'
     ],
     expertVerdict: 'PawsApp is barely worth installing, even at its low price point. It\'s Android-only, which is a dealbreaker for many salons. Users complain that it has "fewer features than a free Google Calendar," and shockingly, it shows ads despite being a paid subscription. Reviews mention "looks unprofessional," "can\'t export my data," and "waste of $15/month." Support is described as "non-existent." This app feels like a side project that was never properly developed. Skip it entirely.'
-    keyFeatures: [
+  },
   {
     id: '8',
     name: 'K9 Manager',
-      'Appointment alerts'
-    ],Manager tries to compete in the grooming space but falls flat with poor execution and frustrated users.',
+    tagline: 'Grooming business management',
+    description: 'K9 Manager tries to compete in the grooming space but falls flat with poor execution and frustrated users.',
     rating: 2.8,
     reviewCount: 589,
     price: '$34.99/mo',
-    id: '8',id',
+    priceType: 'paid',
     platforms: ['web'],
     logo: '🦮',
     featured: false,
@@ -312,11 +315,11 @@ export const groomingApps: GroomingApp[] = [
       'Expensive for what you get',
       'Runs very slow, long load times',
       'Reports are inaccurate',
-    ],nection',
+      'Requires constant internet connection',
       'Frequent timeout errors',
       'Difficult to get support'
     ],
-      'Expensive for what you get',
+    keyFeatures: [
       'Web-based scheduling',
       'Client records',
       'Invoicing',
