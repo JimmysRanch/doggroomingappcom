@@ -1,9 +1,11 @@
 import { GroomingApp } from '@/lib/types'
+import { useComparison } from '@/lib/ComparisonContext'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { StarRating, PlatformBadge, PriceBadge } from './RatingComponents'
-import { motion } from 'framer-motion'
+import { Scales } from '@phosphor-icons/react'
+import { toast } from 'sonner'
 
 interface AppCardProps {
   app: GroomingApp
@@ -11,6 +13,33 @@ interface AppCardProps {
 }
 
 export function AppCard({ app, onViewDetails }: AppCardProps) {
+  const { addToComparison, isInComparison, canAddMore } = useComparison()
+
+  const handleAddToCompare = () => {
+    if (isInComparison(app.id)) {
+      toast.info('Already in comparison', {
+        description: `${app.name} is already selected for comparison.`
+      })
+      return
+    }
+
+    const added = addToComparison(app)
+    if (added) {
+      toast.success('Added to comparison', {
+        description: `${app.name} added. Scroll down to see the comparison.`
+      })
+      setTimeout(() => {
+        document.getElementById('compare')?.scrollIntoView({ behavior: 'smooth' })
+      }, 500)
+    } else {
+      toast.error('Comparison full', {
+        description: 'You can only compare up to 3 apps at once.'
+      })
+    }
+  }
+
+  const inComparison = isInComparison(app.id)
+
   return (
     <Card className="h-full flex flex-col p-6 hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 relative overflow-hidden group">
       {app.featured && (
@@ -41,12 +70,23 @@ export function AppCard({ app, onViewDetails }: AppCardProps) {
         <PlatformBadge platforms={app.platforms} />
       </div>
 
-      <Button 
-        onClick={() => onViewDetails(app)}
-        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-      >
-        View Details
-      </Button>
+      <div className="grid grid-cols-2 gap-2">
+        <Button 
+          onClick={handleAddToCompare}
+          variant={inComparison ? "secondary" : "outline"}
+          disabled={inComparison || !canAddMore}
+          className="flex items-center gap-2"
+        >
+          <Scales className="w-4 h-4" />
+          {inComparison ? 'Added' : 'Compare'}
+        </Button>
+        <Button 
+          onClick={() => onViewDetails(app)}
+          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+        >
+          View Details
+        </Button>
+      </div>
     </Card>
   )
 }

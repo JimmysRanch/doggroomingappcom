@@ -27,6 +27,12 @@ export function Navbar() {
             </Button>
             <Button 
               variant="ghost" 
+              onClick={() => scrollToSection('compare')}
+            >
+              Compare
+            </Button>
+            <Button 
+              variant="ghost" 
               onClick={() => scrollToSection('how-it-works')}
             >
               How It Works
