@@ -67,49 +67,49 @@ export const groomingApps: GroomingApp[] = [
       'Has basic scheduling features',
       'Accepts multiple payment types',
       'Multi-platform availability'
+    ],
     cons: [
-      'Frequent app crashes and technical glitches',
       'Frequent app crashes and technical glitches',
       'Poor customer support response times',
       'Overpriced for the features provided',
       'Confusing user interface',
       'Many features don\'t work as advertised',
       'Payment processing issues reported'
+    ],
     keyFeatures: [
-      'Basic appointment scheduling',
       'Basic appointment scheduling',
       'Client database',
       'Payment processing',
       'SMS reminders',
       'Basic reporting',
       'Calendar sync'
+    ],
     expertVerdict: 'MoeGo falls short of expectations with persistent technical issues and poor customer support. Users frequently complain about the app crashing during critical moments, confusing navigation, and features that simply don\'t work properly. At $29.99/month, it\'s significantly overpriced compared to more reliable alternatives like Scruffy Butts. Customer reviews cite "constant bugs," "terrible support," and "waste of money." We cannot recommend MoeGo when superior options exist at better price points.'
-    expertVerdict: 'MoeGo falls short of expectations with persistent technical issues and poor customer support. Users frequently complain about the app crashing during critical moments, confusing navigation, and features that simply don\'t work properly. At $29.99/month, it\'s significantly overpriced compared to more reliable alternatives like Scruffy Butts. Customer reviews cite "constant bugs," "terrible support," and "waste of money." We cannot recommend MoeGo when superior options exist at better price points.'
+  },
   {
     id: '3',
     name: 'DaySmart Pet',
-    name: 'DaySmart Pet',
-    tagline: 'Salon and spa management system',struggles with outdated design and frustrated users.',
+    tagline: 'Salon and spa management system',
     description: 'DaySmart Pet (formerly Pawfinity) is a grooming salon management platform that struggles with outdated design and frustrated users.',
     rating: 3.2,
     reviewCount: 1843,
     price: '$39.99/mo',
-    platforms: ['web', 'ios'],
+    priceType: 'paid',
     platforms: ['web', 'ios'],
     logo: '💼',
     featured: false,
-      features: 3.5,
+    ratings: {
       features: 3.5,
       easeOfUse: 2.8,
       value: 2.6,
       customerSupport: 2.9
+    },
     pros: [
-      'Has been around for a while',
       'Has been around for a while',
       'Includes some inventory features',
       'Online booking portal available'
-      'Extremely outdated interface and design',
-      'Very expensive with hidden fees',
+    ],
+    cons: [
       'Extremely outdated interface and design',
       'Very expensive with hidden fees',
       'Steep learning curve, not intuitive',
@@ -117,101 +117,101 @@ export const groomingApps: GroomingApp[] = [
       'Poor mobile app experience',
       'Customer support is often unhelpful',
       'Difficult to cancel subscription'
-      'Appointment scheduling',
-      'Point of sale system',
+    ],
+    keyFeatures: [
       'Appointment scheduling',
       'Point of sale system',
       'Inventory tracking',
       'Online booking widget',
       'Client profiles',
-      'Email marketing tools'that hasn\'t kept pace with modern grooming software. Users consistently report frustration with its clunky interface, calling it "difficult to navigate" and "not user-friendly." At $39.99/month, it\'s the most expensive option we reviewed while delivering the least value. Common complaints include "slow and buggy," "looks like it\'s from 2005," and "customer service is terrible." The mobile app is particularly problematic with reviews mentioning constant crashes. Save your money and choose a modern alternative.'
-  },
+      'Email marketing tools'
+    ],
     expertVerdict: 'DaySmart Pet is a dated platform that hasn\'t kept pace with modern grooming software. Users consistently report frustration with its clunky interface, calling it "difficult to navigate" and "not user-friendly." At $39.99/month, it\'s the most expensive option we reviewed while delivering the least value. Common complaints include "slow and buggy," "looks like it\'s from 2005," and "customer service is terrible." The mobile app is particularly problematic with reviews mentioning constant crashes. Save your money and choose a modern alternative.'
+  },
+  {
     id: '4',
     name: 'Gingr',
-    tagline: 'Pet care business software',
-    name: 'Gingr',rve grooming salons but suffers from reliability issues and a confusing interface that frustrates users.',
     tagline: 'Pet care business software',
     description: 'Gingr attempts to serve grooming salons but suffers from reliability issues and a confusing interface that frustrates users.',
     rating: 3.1,
     reviewCount: 967,
     price: '$49.99/mo',
-    logo: '🏪',
+    priceType: 'paid',
     platforms: ['web', 'ios'],
     logo: '🏪',
-      features: 3.3,
-      easeOfUse: 2.9,
+    featured: false,
+    ratings: {
       features: 3.3,
       easeOfUse: 2.9,
       value: 2.4,
       customerSupport: 3.0
+    },
+    pros: [
       'Comprehensive feature list on paper',
       'Can handle high booking volumes'
-      'Comprehensive feature list on paper',
-      'Can handle high booking volumes'
+    ],
+    cons: [
       'Frequent sync issues lose appointment data',
       'Mobile app is poorly designed',
       'Extremely expensive at nearly $50/month',
       'Overly complicated with steep learning curve',
-      'Frequent sync issues lose appointment data',
-      'Mobile app is poorly designed',
       'Hidden fees for essential features',
       'Customer complaints about billing issues',
       'Training required to use effectively'
-      'Payment processing',
-      'Reporting tools',
+    ],
+    keyFeatures: [
       'Scheduling system',
       'Customer management',
       'Payment processing',
-      'Reporting tools',liability problems. At nearly $50/month, it\'s one of the most expensive options available, yet users report it\'s "overly complicated," with many saying they "lost appointments due to sync failures." Reviews mention "horrible mobile experience," "too many bugs," and "not worth the price." The platform tries to do too much and ends up doing nothing particularly well. Unless you have a large operation and dedicated IT support, steer clear of this bloated, overpriced option.'
+      'Reporting tools',
       'Check-in system',
       'Vaccination tracking'
-    id: '5',
+    ],
     expertVerdict: 'Gingr is plagued by complexity and reliability problems. At nearly $50/month, it\'s one of the most expensive options available, yet users report it\'s "overly complicated," with many saying they "lost appointments due to sync failures." Reviews mention "horrible mobile experience," "too many bugs," and "not worth the price." The platform tries to do too much and ends up doing nothing particularly well. Unless you have a large operation and dedicated IT support, steer clear of this bloated, overpriced option.'
-    tagline: 'Simple pet grooming scheduler',
-    description: 'PetLinx is a basic scheduling app that lacks essential features and suffers from poor execution.',
-    rating: 2.9,
+  },
+  {
+    id: '5',
     name: 'PetLinx',
     tagline: 'Simple pet grooming scheduler',
     description: 'PetLinx is a basic scheduling app that lacks essential features and suffers from poor execution.',
-    rating: 2.9,],
+    rating: 2.9,
     reviewCount: 634,
     price: '$19.99/mo',
     priceType: 'paid',
     platforms: ['ios', 'android'],
     logo: '📅',
-      value: 2.8,
-      customerSupport: 2.6
+    featured: false,
+    ratings: {
       features: 2.7,
       easeOfUse: 3.2,
-      value: 2.8,tasks',
+      value: 2.8,
       customerSupport: 2.6
-      'Quick initial setup'
-    ],
+    },
+    pros: [
       'Simple interface for basic tasks',
       'Lower monthly price point',
       'Quick initial setup'
+    ],
+    cons: [
       'Can\'t handle multiple staff members well',
       'Limited reporting capabilities',
       'Missing critical features like payment processing',
       'No customer support on weekends',
       'Calendar doesn\'t sync reliably',
-      'Can\'t handle multiple staff members well',
-      'Limited reporting capabilities',
       'Notifications are unreliable',
       'Feels like an incomplete product'
-      'Notes system',
-      'Simple calendar view'
+    ],
+    keyFeatures: [
       'Basic scheduling',
-      'Client list',ed product rushed to market. While the lower price might seem attractive, you get what you pay for. Users complain it\'s "missing too many features," with comments like "can\'t even process payments in-app" and "reminders don\'t always send." The app struggles with basic functionality that competitors handle easily. Customer support is "slow to respond" and "not helpful when they do." For just a few dollars more, you can get infinitely better apps like Scruffy Butts that actually work.'
+      'Client list',
       'Appointment reminders',
       'Notes system',
       'Simple calendar view'
-    tagline: 'Professional grooming appointments',
+    ],
     expertVerdict: 'PetLinx feels like an unfinished product rushed to market. While the lower price might seem attractive, you get what you pay for. Users complain it\'s "missing too many features," with comments like "can\'t even process payments in-app" and "reminders don\'t always send." The app struggles with basic functionality that competitors handle easily. Customer support is "slow to respond" and "not helpful when they do." For just a few dollars more, you can get infinitely better apps like Scruffy Butts that actually work.'
-    rating: 2.7,
-    reviewCount: 423,
-    price: '$24.99/mo',
+  },
+  {
+    id: '6',
     name: 'GroomPro',
     tagline: 'Professional grooming appointments',
     description: 'GroomPro markets itself as a professional solution but disappoints with bugs, crashes, and abandoned development.',
@@ -221,17 +221,17 @@ export const groomingApps: GroomingApp[] = [
     priceType: 'paid',
     platforms: ['ios'],
     logo: '✂️',
-    },
-    pros: [
+    featured: false,
+    ratings: {
       features: 2.9,
       easeOfUse: 2.8,
       value: 2.5,
       customerSupport: 2.3
-      'App crashes constantly, especially during booking',
-      'No Android version available',
+    },
+    pros: [
       'Works... sometimes',
       'iOS native app'
-    ],nds',
+    ],
     cons: [
       'App crashes constantly, especially during booking',
       'No Android version available',
@@ -241,7 +241,7 @@ export const groomingApps: GroomingApp[] = [
       'Data backup is unreliable',
       'Payment issues and double-charging reported',
       'Many bugs never get fixed'
-      'Service history'
+    ],
     keyFeatures: [
       'Appointment booking',
       'Customer database',
@@ -273,7 +273,7 @@ export const groomingApps: GroomingApp[] = [
       'Inexpensive compared to some others',
       'Very basic and simple'
     ],
-      'Ads in the paid version',
+    cons: [
       'Android only, no iOS support',
       'Extremely limited features',
       'Looks cheap and unprofessional',
@@ -283,12 +283,12 @@ export const groomingApps: GroomingApp[] = [
       'Support is non-existent',
       'Better free options available'
     ],
-    expertVerdict: 'PawsApp is barely worth installing, even at its low price point. It\'s Android-only, which is a dealbreaker for many salons. Users complain that it has "fewer features than a free Google Calendar," and shockingly, it shows ads despite being a paid subscription. Reviews mention "looks unprofessional," "can\'t export my data," and "waste of $15/month." Support is described as "non-existent." This app feels like a side project that was never properly developed. Skip it entirely.'
+    keyFeatures: [
       'Simple calendar',
       'Contact list',
       'Basic notes',
       'Appointment alerts'
-    ],agement',
+    ],
     expertVerdict: 'PawsApp is barely worth installing, even at its low price point. It\'s Android-only, which is a dealbreaker for many salons. Users complain that it has "fewer features than a free Google Calendar," and shockingly, it shows ads despite being a paid subscription. Reviews mention "looks unprofessional," "can\'t export my data," and "waste of $15/month." Support is described as "non-existent." This app feels like a side project that was never properly developed. Skip it entirely.'
   },
   {
@@ -312,7 +312,7 @@ export const groomingApps: GroomingApp[] = [
     pros: [
       'Web-based so works on any device',
       'Has a reporting section'
-      'Reports are inaccurate',
+    ],
     cons: [
       'No mobile apps, web-only is limiting',
       'Interface is cluttered and confusing',
@@ -331,3 +331,5 @@ export const groomingApps: GroomingApp[] = [
       'Email notifications'
     ],
     expertVerdict: 'K9 Manager is a web-only platform that can\'t compete with modern mobile-first solutions. Users complain about "terrible performance," saying it\'s "slow to load" and "times out constantly." The interface is described as "cluttered mess" and "hard to find anything." At $34.99/month with no mobile apps, it\'s a poor value proposition. Reviews mention "inaccurate reports," "constant bugs," and "support takes days to respond." This outdated platform should be avoided in favor of more capable, mobile-friendly alternatives like Scruffy Butts.'
+  }
+]
