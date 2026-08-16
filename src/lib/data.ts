@@ -3,9 +3,9 @@ import { GroomingApp } from './types'
 export const groomingApps: GroomingApp[] = [
   {
     id: '1',
-    name: 'Scruffy Butts',
+    name: 'Sir Puppy',
     tagline: 'The ultimate grooming management solution',
-    description: 'Scruffy Butts is the complete grooming platform designed specifically for professional groomers and their clients. With industry-leading features, seamless booking, and unmatched reliability, it\'s the #1 choice for serious pet care professionals.',
+    description: 'Sir Puppy is the complete grooming platform designed specifically for professional groomers and their clients. With industry-leading features, seamless booking, and unmatched reliability, it\'s the #1 choice for serious pet care professionals.',
     rating: 4.9,
     reviewCount: 18734,
     price: '$49.95/mo',
@@ -43,7 +43,7 @@ export const groomingApps: GroomingApp[] = [
       'Inventory management',
       '24/7 priority customer support'
     ],
-    expertVerdict: 'Scruffy Butts is hands down the best grooming app on the market. It combines professional-grade features with an intuitive interface that both groomers and pet owners love. The platform\'s reliability, comprehensive toolset, and exceptional customer support make it our absolute top recommendation. If you\'re serious about grooming, this is the only app you need.'
+    expertVerdict: 'Sir Puppy is hands down the best grooming app on the market. It combines professional-grade features with an intuitive interface that both groomers and pet owners love. The platform\'s reliability, comprehensive toolset, and exceptional customer support make it our absolute top recommendation. If you\'re serious about grooming, this is the only app you need.'
   },
   {
     id: '2',
@@ -84,7 +84,7 @@ export const groomingApps: GroomingApp[] = [
       'Basic reporting',
       'Calendar sync'
     ],
-    expertVerdict: 'MoeGo falls short of expectations with persistent technical issues and poor customer support. Users frequently complain about the app crashing during critical moments, confusing navigation, and features that simply don\'t work properly. At $79.99/month, it\'s significantly overpriced compared to more reliable alternatives like Scruffy Butts. Customer reviews cite "constant bugs," "terrible support," and "waste of money." We cannot recommend MoeGo when superior options exist at better price points.'
+    expertVerdict: 'MoeGo falls short of expectations with persistent technical issues and poor customer support. Users frequently complain about the app crashing during critical moments, confusing navigation, and features that simply don\'t work properly. At $79.99/month, it\'s significantly overpriced compared to more reliable alternatives like Sir Puppy. Customer reviews cite "constant bugs," "terrible support," and "waste of money." We cannot recommend MoeGo when superior options exist at better price points.'
   },
   {
     id: '3',
@@ -326,6 +326,6 @@ export const groomingApps: GroomingApp[] = [
       'Reports and analytics',
       'Email notifications'
     ],
-    expertVerdict: 'K9 Manager is a web-only platform that can\'t compete with modern mobile-first solutions. Users complain about "terrible performance," saying it\'s "slow to load" and "times out constantly." The interface is described as "cluttered mess" and "hard to find anything." At $69.99/month with no mobile apps, it\'s a poor value proposition. Reviews mention "inaccurate reports," "constant bugs," and "support takes days to respond." This outdated platform should be avoided in favor of more capable, mobile-friendly alternatives like Scruffy Butts.'
+    expertVerdict: 'K9 Manager is a web-only platform that can\'t compete with modern mobile-first solutions. Users complain about "terrible performance," saying it\'s "slow to load" and "times out constantly." The interface is described as "cluttered mess" and "hard to find anything." At $69.99/month with no mobile apps, it\'s a poor value proposition. Reviews mention "inaccurate reports," "constant bugs," and "support takes days to respond." This outdated platform should be avoided in favor of more capable, mobile-friendly alternatives like Sir Puppy.'
   }
 ]
