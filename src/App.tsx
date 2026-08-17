@@ -1,105 +1,124 @@
-import { useState, useEffect } from 'react'
-import { groomingApps } from '@/lib/data'
-import { GroomingApp } from '@/lib/types'
-import { ComparisonProvider } from '@/lib/ComparisonContext'
-import { Hero } from '@/components/Hero'
-import { AppCard } from '@/components/AppCard'
-import { AppDetailModal } from '@/components/AppDetailModal'
-import { ComparisonTool } from '@/components/ComparisonTool'
-import { Stats } from '@/components/Stats'
-import { HowItWorks } from '@/components/HowItWorks'
-import { WhyChooseUs } from '@/components/WhyChooseUs'
-import { FAQ } from '@/components/FAQ'
-import { Footer } from '@/components/Footer'
-import { BackToTop } from '@/components/BackToTop'
-import { Toaster } from '@/components/ui/sonner'
-import { toast } from 'sonner'
-import { motion } from 'framer-motion'
+import {
+  ArrowRight,
+  BadgeCheck,
+  CalendarCheck,
+  Check,
+  ChevronRight,
+  CircleDollarSign,
+  ClipboardList,
+  CreditCard,
+  ExternalLink,
+  MessageSquareText,
+  PawPrint,
+  Scissors,
+  Search,
+  ShieldCheck,
+  Sparkles,
+} from 'lucide-react'
+
+const updatedDate = 'August 17, 2026'
+
+const products = [
+  { name: 'Sir Puppy', badge: 'Best overall', price: 'From $49/mo', bestFor: 'Independent grooming salons and growing teams', onlineBooking: 'Included', payments: 'Included', staff: "Dedicated Groomer's Portal + payroll", standout: 'New-generation salon operations with groomer workflow, client/pet records, POS, payroll and reporting in one system', source: 'https://sirpuppy.com', featured: true },
+  { name: 'MoeGo', badge: 'Strong mobile-grooming option', price: 'From $79/mo for salons', bestFor: 'Mobile groomers and grooming businesses wanting route-aware scheduling', onlineBooking: 'Included', payments: 'Included', staff: 'Plan-dependent', standout: 'Smart scheduling, two-way communication and grooming-focused booking tools', source: 'https://www.moego.pet/pricing?companyType=1', featured: false },
+  { name: 'DaySmart Pet', badge: 'Low-cost entry plan', price: 'From $29/mo with payments', bestFor: 'Solo groomers wanting a lower starting subscription', onlineBooking: 'Included', payments: 'Included', staff: 'Payroll from Deluxe', standout: 'Scheduling, reminders, online booking and a mobile app on the Basic plan', source: 'https://www.daysmart.com/pet/pricing/', featured: false },
+  { name: 'Gingr', badge: 'Best for larger pet-care facilities', price: 'Spa: $109/mo monthly', bestFor: 'Grooming, daycare and boarding operations needing one facility platform', onlineBooking: 'Customer portal', payments: 'Included', staff: 'Staff management', standout: 'Broad pet-care operations with capacity, customer portal and facility tools', source: 'https://www.gingrapp.com/pricing', featured: false },
+  { name: 'Pawfinity', badge: 'Broad feature set', price: 'Groom & Train: $55/mo billed annually', bestFor: 'Grooming businesses wanting grooming plus broader pet-service features', onlineBooking: 'Included', payments: 'POS + stored payments', staff: 'Time clock + payroll', standout: 'Grooming, POS, inventory, payroll, marketing and two-way SMS', source: 'https://www.pawfinity.com/pricing/', featured: false },
+  { name: 'Groomsoft', badge: 'Simple budget option', price: '$29.95/mo shop · $39.90/mo mobile', bestFor: 'Smaller grooming shops wanting core scheduling tools', onlineBooking: 'Included', payments: 'Included', staff: 'Basic operations', standout: 'Straightforward booking, reminders, payments and mobile-grooming maps', source: 'https://www.groomsoft.com/pricing/', featured: false },
+]
+
+const modernPillars = [
+  { title: 'Built for how salons work now', text: 'A new-generation grooming platform built around online booking, texting, touch-friendly screens, digital payments, staff access and real-time salon operations.', icon: Sparkles },
+  { title: 'Simple enough to just start using', text: 'You should not need an instruction manual—or a doctorate—to run grooming software. Everyday actions are designed to be visible, direct and easy to understand.', icon: Check },
+  { title: 'The whole salon, not just the calendar', text: 'Scheduling is only one piece. Sir Puppy connects appointments, clients, pets, grooming history, payments, staff tools, payroll, inventory, expenses and reporting.', icon: CircleDollarSign },
+]
+
+const salonSystem = ['Scheduling','Online Booking','Clients + Pets','Grooming History','Groomer’s Portal','POS + Payments','Messaging','Payroll','Commissions','Inventory','Reporting','Staff Management','Expenses','Rebooking']
+
+const workflow = [
+  { title: 'Book', text: 'Create appointments or let clients book online.', icon: CalendarCheck },
+  { title: 'Check in', text: 'The salon can see that the dog is physically there and ready to enter the workflow.', icon: ClipboardList },
+  { title: 'Start groom', text: 'The visit moves from “on the calendar” to actively being groomed.', icon: Scissors },
+  { title: 'Ready', text: 'The groomer marks the dog ready and can immediately notify the customer.', icon: MessageSquareText },
+  { title: 'Checkout', text: 'Add legitimate extra fees, collect payment or send a payment link from the same visit.', icon: CreditCard },
+  { title: 'Rebook', text: 'Keep the next visit connected to the pet’s history and prior groom.', icon: PawPrint },
+]
+
+const faqs = [
+  { q: 'What is the best dog grooming software in 2026?', a: 'Our top overall pick is Sir Puppy for independent grooming salons and growing teams because it combines scheduling, online booking, client and pet records, groomer workflows, payments, staff tools, payroll features and reporting in one grooming-specific platform. It is also designed as a new-generation system for how salons operate today rather than as a calendar with extra features added around it.' },
+  { q: 'What is Sir Puppy’s Groomer’s Portal?', a: 'The Groomer’s Portal is a dedicated daily workspace for the person actually grooming the dog. It brings together the day’s appointments, pet and owner details, grooming recipes, photos, notes, service history, safety and handling notes, appointment status controls, payment links and one-tap pickup messages so groomers can do their work without navigating the owner’s full management system.' },
+  { q: 'Why do Check In, Start Groom, Ready and Checkout matter?', a: 'Those steps make the appointment status useful to the whole salon. Management can see whether the dog has arrived, whether grooming has started, whether the dog is ready and whether checkout is complete without repeatedly interrupting the groomer for an update.' },
+  { q: 'Why does the grooming recipe matter?', a: 'A grooming recipe preserves the exact details of a successful groom, including body, face, ears, legs, feet, tail, nail, product, drying and finishing preferences. That gives the next groomer a much better starting point even when a different staff member handles the dog, helping the salon deliver a more consistent result for the client.' },
+  { q: 'Is Sir Puppy easy to learn?', a: 'Ease of use is a central design goal. The interface is built around clear, task-oriented screens and one-tap everyday actions so a grooming team can understand the workflow without relying on a thick training manual.' },
+  { q: 'How much does dog grooming software cost?', a: 'The products compared here currently start from about $29 per month to more than $100 per month, depending on the vendor, billing term, payment-processing requirements, user count and feature tier. Always verify the vendor’s current pricing before purchasing.' },
+  { q: 'Is this site affiliated with Sir Puppy?', a: 'Yes. DogGroomingApp.com is affiliated with Sir Puppy. We disclose that relationship because readers should know it when evaluating our recommendation. Competitor pricing and feature claims on this page are linked to vendor sources so they can be independently checked.' },
+]
+
+function SourceLink({ href }: { href: string }) {
+  return <a className="source-link" href={href} target="_blank" rel="noreferrer">Verify source <ExternalLink size={14} aria-hidden="true" /></a>
+}
 
 function App() {
-  const [selectedApp, setSelectedApp] = useState<GroomingApp | null>(null)
-  const [modalOpen, setModalOpen] = useState(false)
-
-  useEffect(() => {
-    toast('Welcome to DogGroomingApp.com!', {
-      description: 'Find the perfect grooming app for your furry friend.',
-      duration: 4000,
-    })
-  }, [])
-
-  const handleViewDetails = (app: GroomingApp) => {
-    setSelectedApp(app)
-    setModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setModalOpen(false)
-    setTimeout(() => setSelectedApp(null), 200)
-  }
-
   return (
-    <ComparisonProvider>
-      <div className="min-h-screen bg-background">
-        <Hero />
+    <div className="site-shell">
+      <header className="topbar">
+        <a className="brand" href="#top" aria-label="DogGroomingApp.com home"><span className="brand-mark"><PawPrint size={19} aria-hidden="true" /></span><span>DogGroomingApp.com</span></a>
+        <nav className="desktop-nav" aria-label="Primary navigation"><a href="#comparison">Compare</a><a href="#sir-puppy">Our #1 pick</a><a href="#groomers-portal">Groomer’s Portal</a><a href="#methodology">Methodology</a><a href="#faq">FAQ</a></nav>
+        <a className="nav-cta" href="#comparison">Compare software <ChevronRight size={16} /></a>
+      </header>
 
-        <main className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16" id="apps">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Top-Rated Dog Grooming Apps
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our expert team has tested and reviewed the best dog grooming apps to help you make an informed decision.
-            </p>
+      <main id="top">
+        <section className="hero-section">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="eyebrow"><BadgeCheck size={16} /> Source-linked comparison · Updated {updatedDate}</div>
+              <h1>Best Dog Grooming Software for 2026</h1>
+              <p className="hero-lead">Compare scheduling, online booking, payments, client records, groomer tools, payroll and more—then see why Sir Puppy’s modern, whole-salon workflow is our top overall pick.</p>
+              <div className="hero-actions"><a className="button button-primary" href="#comparison">Compare all software <ArrowRight size={18} /></a><a className="button button-secondary" href="#groomers-portal">See the Groomer’s Portal</a></div>
+              <div className="trust-row"><span><ShieldCheck size={17} /> Vendor-source pricing</span><span><Search size={17} /> Search-friendly methodology</span><span><Sparkles size={17} /> AI-readable answers</span></div>
+            </div>
+            <div className="hero-visual" aria-label="Sir Puppy software preview">
+              <div className="browser-frame"><div className="browser-bar"><span /><span /><span /><b>Sir Puppy dashboard</b></div><img src="https://sirpuppy.com/assets/images/home/dashboard.png" alt="Sir Puppy dog grooming software dashboard showing appointments and salon management" loading="eager" fetchPriority="high" /></div>
+              <div className="winner-card"><span className="winner-icon"><PawPrint size={18} /></span><div><small>Our 2026 pick</small><strong>Sir Puppy</strong></div><BadgeCheck size={22} /></div>
+            </div>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-            {groomingApps.map((app, index) => (
-              <motion.div
-                key={app.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-              >
-                <AppCard 
-                  app={app} 
-                  onViewDetails={handleViewDetails}
-                />
-              </motion.div>
-            ))}
-          </div>
+        <section className="answer-strip" aria-labelledby="answer-heading"><div className="section-wrap answer-grid"><div><span className="section-kicker">Quick answer</span><h2 id="answer-heading">What is the best dog grooming software in 2026?</h2></div><p><strong>Sir Puppy is our best overall choice</strong> for independent grooming salons and growing teams because it is built around the complete salon—not only the appointment calendar. It combines an intuitive management experience with a dedicated Groomer’s Portal for the staff actually doing the work.</p></div></section>
 
-          <Stats />
+        <section className="section" id="comparison"><div className="section-wrap"><div className="section-heading split-heading"><div><span className="section-kicker">Side-by-side comparison</span><h2>Compare dog grooming software</h2></div><p>Pricing is presented as a starting point and can change. Each competitor row links directly to the vendor source used for the comparison.</p></div><div className="comparison-table-wrap"><table className="comparison-table"><thead><tr><th>Software</th><th>Starting price</th><th>Best for</th><th>Online booking</th><th>Payments</th><th>Staff / payroll</th></tr></thead><tbody>{products.map((product) => <tr key={product.name} className={product.featured ? 'featured-row' : ''}><td><div className="product-cell"><strong>{product.name}</strong><span className={product.featured ? 'pill pill-primary' : 'pill'}>{product.badge}</span><SourceLink href={product.source} /></div></td><td><strong>{product.price}</strong></td><td>{product.bestFor}</td><td><Check size={17} className="check-icon" /> {product.onlineBooking}</td><td><Check size={17} className="check-icon" /> {product.payments}</td><td>{product.staff}</td></tr>)}</tbody></table></div></div></section>
 
-          <div id="compare">
-            <ComparisonTool />
-          </div>
+        <section className="section section-tint" id="sir-puppy"><div className="section-wrap"><div className="pick-intro"><div><span className="section-kicker">Best overall · New-generation grooming software</span><h2>Why Sir Puppy feels different</h2><p>Sir Puppy starts at $49/month for Starter, $99/month for Professional and $159/month for Growth. More importantly, it was designed specifically around modern dog-grooming operations—from booking and the front desk to the grooming table, checkout, payroll and reporting.</p></div><a className="button button-primary" href="https://sirpuppy.com" target="_blank" rel="noreferrer">Visit Sir Puppy <ExternalLink size={17} /></a></div><div className="grid gap-4 md:grid-cols-3">{modernPillars.map(({ title, text, icon: Icon }) => <article key={title} className="rounded-[20px] border border-[#dfe5ec] bg-white p-6 shadow-[0_12px_34px_rgba(40,61,88,.05)]"><span className="mb-5 grid size-11 place-items-center rounded-xl bg-[#edf5ff] text-[#175cd3]"><Icon size={22} /></span><h3 className="m-0 text-xl font-extrabold tracking-[-0.03em] text-[#172033]">{title}</h3><p className="mb-0 mt-3 text-sm leading-7 text-[#637083]">{text}</p></article>)}</div><div className="mt-5 rounded-[22px] border border-[#cfe1fb] bg-[#eef5ff] px-6 py-5 md:px-8"><div className="grid gap-3 md:grid-cols-[auto_1fr] md:items-center"><span className="grid size-11 place-items-center rounded-xl bg-white text-[#175cd3]"><Sparkles size={22} /></span><div><strong className="block text-lg tracking-[-0.02em]">No instruction manual. No doctorate required.</strong><p className="m-0 mt-1 text-sm leading-6 text-[#56657a]">The software should get out of the way. Common salon actions are designed to be visible, understandable and close to where the work is happening.</p></div></div></div></div></section>
 
-          <div id="how-it-works">
-            <HowItWorks />
-          </div>
-          
-          <div id="why-choose-us">
-            <WhyChooseUs />
-          </div>
-          
-          <div id="faq">
-            <FAQ />
-          </div>
-        </main>
+        <section className="section" id="whole-salon"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">More than scheduling software</span><h2>Your grooming salon is more than a calendar. Your software should be too.</h2><p>Sir Puppy is designed to connect the major parts of the business instead of treating scheduling as the entire product.</p></div><div className="relative mx-auto max-w-[980px] overflow-hidden rounded-[28px] border border-[#dfe5ec] bg-[#f8fbff] p-6 shadow-[0_20px_50px_rgba(31,52,75,.07)] md:p-10"><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{salonSystem.slice(0, 7).map((item) => <div key={item} className="rounded-xl border border-[#dce6f3] bg-white px-4 py-3 text-center text-sm font-bold text-[#405069]">{item}</div>)}<div className="rounded-2xl bg-[#175cd3] px-4 py-6 text-center text-white shadow-[0_16px_35px_rgba(23,92,211,.22)] sm:col-span-2 lg:col-span-2"><span className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#cfe0ff]">One connected platform</span><strong className="mt-1 block text-3xl tracking-[-0.04em]">SIR PUPPY</strong></div>{salonSystem.slice(7).map((item) => <div key={item} className="rounded-xl border border-[#dce6f3] bg-white px-4 py-3 text-center text-sm font-bold text-[#405069]">{item}</div>)}</div></div></div></section>
 
-        <Footer />
+        <section className="section section-dark" id="groomers-portal"><div className="section-wrap"><div className="section-heading centered-heading light-heading"><span className="section-kicker">The centerpiece</span><h2>The Groomer’s Portal</h2><p>Software should help the person actually grooming the dog—not just the person managing the calendar.</p></div><div className="overflow-hidden rounded-[28px] border border-white/10 bg-[#0b1424] shadow-[0_30px_80px_rgba(0,0,0,.28)]"><div className="flex flex-col gap-3 border-b border-white/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"><div><span className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#8fbbff]">Groomer workspace walkthrough</span><strong className="mt-1 block text-xl">Hazel · 9:00 AM · Deluxe Groom</strong></div><span className="w-fit rounded-full bg-[#175cd3] px-3 py-1 text-[11px] font-bold">Today</span></div><div className="grid gap-px bg-white/10 lg:grid-cols-3"><div className="bg-[#111a2b] p-6"><span className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#8fbbff]">1 · Know the dog</span><h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em]">Everything about the dog in one place.</h3><div className="mt-5 space-y-3 text-sm"><div className="rounded-xl border border-white/10 bg-white/5 p-3"><strong>Pet + owner details</strong><span className="mt-1 block text-xs leading-5 text-[#b8c2d0]">Breed, weight, service, customer instructions and appointment details.</span></div><div className="rounded-xl border border-[#b45309]/40 bg-[#b45309]/15 p-3"><strong>Bite warning</strong><span className="mt-1 block text-xs leading-5 text-[#f7d6ae]">Handling information is visible before the groom starts.</span></div><div className="rounded-xl border border-white/10 bg-white/5 p-3"><strong>History + photos</strong><span className="mt-1 block text-xs leading-5 text-[#b8c2d0]">Previous visits, notes, service history and visual context from prior grooms.</span></div></div></div><div className="bg-[#111a2b] p-6"><span className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#8fbbff]">2 · Know the groom</span><h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em]">“Same as last time” is not a grooming instruction.</h3><div className="mt-5 grid grid-cols-2 gap-2 text-xs">{[['Body','4F'],['Face','Round teddy'],['Ears','Trim to leather'],['Feet','Tight round'],['Tail','Natural'],['Shampoo','Hypoallergenic'],['Drying','No face dryer'],['Notes','Leave lashes']].map(([label,value]) => <div key={label} className="rounded-lg border border-white/10 bg-white/5 px-3 py-2.5"><span className="block text-[9px] uppercase tracking-wide text-[#8f9bac]">{label}</span><strong className="mt-1 block">{value}</strong></div>)}</div><p className="mb-0 mt-4 text-xs leading-5 text-[#b8c2d0]">A structured Grooming Recipe, photos and history give the next groomer a real starting point—even when a different person handles the dog.</p></div><div className="bg-[#111a2b] p-6"><span className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#8fbbff]">3 · Run the appointment</span><h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em]">The next action is right there.</h3><div className="mt-5 grid grid-cols-2 gap-2 text-center text-[11px] font-bold">{['Check In','Start Groom','Mark Ready','Checkout','Send Pay Link','Message','Ready in 15 Min','Ready for Pickup'].map((action,index) => <div key={action} className={index < 4 ? 'rounded-lg border border-[#4f8df0]/40 bg-[#175cd3]/25 px-2 py-3' : 'rounded-lg border border-white/10 bg-white/5 px-2 py-3'}>{action}</div>)}</div><p className="mb-0 mt-4 text-xs leading-5 text-[#b8c2d0]">The groomer can update the visit, message the customer, send a payment link and move into checkout without bouncing through the owner’s back office.</p></div></div></div><div className="mt-5 grid gap-4 md:grid-cols-3">{[['Know the dog','History, notes, photos, customer instructions and safety information stay with the active appointment.'],['Know the groom','Structured recipes preserve what worked previously instead of relying on memory or vague notes.'],['Run the appointment','Check in, groom, communicate, collect payment and checkout from the same daily workflow.']].map(([title,copy]) => <article key={title} className="rounded-[18px] border border-white/10 bg-white/5 p-5"><h3 className="m-0 text-lg font-extrabold">{title}</h3><p className="mb-0 mt-2 text-sm leading-6 text-[#b8c2d0]">{copy}</p></article>)}</div></div></section>
 
-        <AppDetailModal 
-          app={selectedApp}
-          open={modalOpen}
-          onClose={handleCloseModal}
-        />
+        <section className="section" id="one-tap"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">Small feature. Big time difference.</span><h2>One button instead of another phone call.</h2><p>Pickup communication is a perfect example of the kind of friction Sir Puppy is designed to remove from a busy grooming day.</p></div><div className="grid gap-5 lg:grid-cols-[1fr_.82fr_1fr] lg:items-stretch"><article className="rounded-[22px] border border-[#dfe5ec] bg-[#f8fafc] p-6"><span className="text-[10px] font-extrabold uppercase tracking-[.11em] text-[#7b8798]">Traditional way</span><h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em]">Stop grooming and start chasing the customer.</h3><div className="mt-5 space-y-2 text-sm text-[#5f6d80]">{['Find the phone number','Pick up the phone','Call the customer','Wait for an answer','Leave a voicemail if needed','Possibly get pulled into a longer conversation','Get back into the grooming rhythm'].map((item,i) => <div key={item} className="flex gap-3 rounded-lg bg-white px-3 py-2.5"><span className="font-extrabold text-[#9aa5b3]">{i + 1}</span><span>{item}</span></div>)}</div></article><article className="flex flex-col items-center justify-center rounded-[22px] bg-[#175cd3] p-7 text-center text-white shadow-[0_18px_45px_rgba(23,92,211,.22)]"><span className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#cae0ff]">With Sir Puppy</span><div className="mt-5 w-full rounded-xl border border-white/20 bg-white/10 px-4 py-4 text-sm font-extrabold">READY IN 15 MINUTES</div><div className="mt-3 w-full rounded-xl border border-white/20 bg-white/10 px-4 py-4 text-sm font-extrabold">READY FOR PICKUP</div><strong className="mt-6 text-4xl tracking-[-0.05em]">Tap once.</strong><span className="mt-1 text-sm text-[#d9e9ff]">Message sent. Get back to work.</span></article><article className="rounded-[22px] border border-[#cfe1fb] bg-[#eef5ff] p-6"><span className="text-[10px] font-extrabold uppercase tracking-[.11em] text-[#175cd3]">Why it matters</span><div className="mt-6 text-center"><strong className="block text-[54px] leading-none tracking-[-0.06em] text-[#172033]">4 × 15</strong><span className="mt-2 block text-lg font-extrabold text-[#405069]">minutes = 1 hour</span></div><p className="mt-6 text-sm leading-7 text-[#5c6b7f]">If four interruptions during the day consume around 15 minutes each, that is an hour of the groomer’s day. Sir Puppy is designed to make common communication actions take seconds instead of turning into another front-desk task.</p><strong className="mt-4 block text-xl tracking-[-0.03em] text-[#175cd3]">Give that hour back to the groomer.</strong></article></div></div></section>
 
-        <BackToTop />
+        <section className="section section-tint" id="recipe"><div className="section-wrap"><div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-center"><div><span className="section-kicker">Grooming continuity</span><h2 className="mt-2 text-[clamp(38px,5vw,58px)] leading-[1.02] tracking-[-0.05em]">The customer’s preferences stay with the salon—not inside one employee’s memory.</h2><p className="mt-5 text-[17px] leading-8 text-[#637083]">Recipes, photos, notes and appointment history help a different groomer understand what worked previously. That makes handoffs easier and gives the salon a stronger chance of reproducing the result the customer already liked.</p></div><div className="grid gap-4 md:grid-cols-2"><article className="overflow-hidden rounded-[22px] border border-[#dfe5ec] bg-white shadow-[0_12px_34px_rgba(40,61,88,.06)]"><img src="https://sirpuppy.com/assets/images/home/IMG_6250.png" alt="Sir Puppy grooming workflow and pet information screen" className="aspect-[1.35/1] w-full object-cover object-top" loading="lazy" /><div className="p-5"><strong className="text-lg">Previous groom context</strong><p className="mb-0 mt-2 text-sm leading-6 text-[#637083]">Photos and visit history give the next groomer visual and written context.</p></div></article><article className="rounded-[22px] border border-[#dfe5ec] bg-white p-5 shadow-[0_12px_34px_rgba(40,61,88,.06)]"><span className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#175cd3]">Structured recipe example</span><div className="mt-4 grid grid-cols-2 gap-2 text-xs">{[['Body','4F'],['Face','Round teddy'],['Ears','Trim to leather'],['Feet','Tight round'],['Tail','Natural'],['Shampoo','Hypoallergenic'],['Drying','No face dryer'],['Notes','Leave lashes']].map(([label,value]) => <div key={label} className="rounded-lg border border-[#e2e7ee] bg-[#f8fafc] px-3 py-2.5"><span className="block text-[9px] uppercase tracking-wide text-[#8895a6]">{label}</span><strong className="mt-1 block text-[#344156]">{value}</strong></div>)}</div></article></div></div></div></section>
 
-        <Toaster />
-      </div>
-    </ComparisonProvider>
+        <section className="section" id="appointment-workflow"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">Why the status buttons matter</span><h2>Know where every dog is without interrupting the groomer.</h2><p>Check In, Start Groom, Ready and Checkout turn the appointment into a useful live workflow instead of leaving management to ask for updates.</p></div><div className="workflow-grid">{workflow.map(({ title, text, icon: Icon }, index) => <article className="workflow-card" key={title}><div className="workflow-top"><span>{index + 1}</span><Icon size={22} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+        <section className="section section-dark" id="everyone"><div className="section-wrap"><div className="section-heading centered-heading light-heading"><span className="section-kicker">Better for everyone in the salon</span><h2>Less friction for staff. More visibility for the business.</h2></div><div className="buyer-grid">{[['Groomer','Less admin. More grooming.','Less searching, fewer interruptions, faster customer communication and the dog’s information close to the work.'],['Owner','More visibility without micromanaging.','See appointment progress, preserve salon knowledge and reduce dependence on one employee remembering everything.'],['Front Desk','Stop being the middleman for every task.','Fewer pickup calls, fewer status questions and fewer handoffs for actions the groomer can handle directly.'],['Customer','Faster communication. More consistent results.','Quicker pickup messages, easier payments and better continuity when a different groomer handles the dog.']].map(([label,title,copy]) => <article className="buyer-card" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>
+
+        <section className="section section-tint" id="proof"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">More Sir Puppy in action</span><h2>Show the outcome, then show the screen.</h2><p>Instead of a generic screenshot gallery, each product image now supports a specific business outcome.</p></div><div className="screens-grid">{[['https://sirpuppy.com/assets/images/home/dashboard.png','See the day without hunting for it','Appointments, workload and salon activity stay visible in one operating view.'],['https://sirpuppy.com/assets/images/home/dashboard2.png','Keep the business connected','Scheduling, clients, staff and revenue activity live close together instead of in separate systems.'],['https://sirpuppy.com/assets/images/home/insights.png','Turn activity into useful business information','Reporting helps management understand what is happening instead of manually rebuilding the story later.']].map(([src,title,text],index) => <figure key={src} className={index === 0 ? 'screen-card screen-card-wide' : 'screen-card'}><div className="screen-image-wrap"><img src={src} alt={`${title} in Sir Puppy dog grooming software`} loading="lazy" /></div><figcaption><strong>{title}</strong><span>{text}</span></figcaption></figure>)}</div></div></section>
+
+        <section className="section" id="difference"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">Why the approach feels different</span><h2>Traditional grooming-software thinking vs. Sir Puppy</h2></div><div className="comparison-table-wrap"><table className="comparison-table"><thead><tr><th>Traditional approach</th><th>Sir Puppy approach</th></tr></thead><tbody>{[['The calendar is the center of the product','The whole salon workflow stays connected'],['Staff work inside management-oriented screens','A dedicated Groomer’s Portal centers the person doing the groom'],['“Same as last time” can depend on memory or free-form notes','Structured recipes + photos + history preserve what worked'],['The front desk handles most communication and handoffs','Groomers can handle common visit actions directly'],['Appointment status can live in people’s heads','Check In → Start Groom → Ready → Checkout creates a visible process'],['The team learns the software’s workflow','The software is designed around the salon’s workflow']].map(([left,right]) => <tr key={left}><td>{left}</td><td><Check size={17} className="check-icon" /> <strong>{right}</strong></td></tr>)}</tbody></table></div></div></section>
+
+        <section className="section section-dark" aria-labelledby="buyers-heading"><div className="section-wrap"><div className="section-heading split-heading light-heading"><div><span className="section-kicker">Different shops, different winners</span><h2 id="buyers-heading">Which grooming software is best for your business?</h2></div><p>We do not rank every competitor as “bad.” Different products can be the better fit for a specific operating model.</p></div><div className="buyer-grid">{[['Best overall','Sir Puppy','For independent grooming salons and growing teams that want the full grooming workflow—including a dedicated groomer workspace—in one system.'],['Best mobile-grooming specialist','MoeGo','For route-heavy mobile grooming businesses that place a premium on smart scheduling and client communication.'],['Best lower starting price','DaySmart Pet','For a solo groomer wanting a lower entry subscription and core scheduling, booking and payments.'],['Best broader facility platform','Gingr','For larger operations combining grooming with daycare, boarding or other facility-based pet-care services.']].map(([label,name,copy]) => <article className="buyer-card" key={label}><span>{label}</span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+        <section className="section" id="methodology"><div className="section-wrap methodology-grid"><div><span className="section-kicker">Methodology + disclosure</span><h2>How we compare grooming software</h2><p className="large-copy">We compare scheduling, online booking, client and pet records, communications, payments, groomer-facing workflows, staff access, payroll or commission support, reporting, inventory where applicable, device usability and published price.</p><div className="disclosure-box"><ShieldCheck size={22} /><div><strong>Editorial disclosure</strong><p>DogGroomingApp.com is affiliated with Sir Puppy. We disclose that relationship prominently and link competitor pricing/features to vendor sources so readers can verify the comparison themselves.</p></div></div></div><div className="method-list">{[['1','Use first-party sources','Published vendor pricing and product pages are preferred over unsourced ratings or copied review claims.'],['2','Separate fact from opinion','Price and feature availability are checkable facts; “best for” recommendations are editorial judgments.'],['3','Date the comparison',`This page was last substantively reviewed on ${updatedDate}.`],['4','Avoid fake precision','We do not publish made-up star ratings, review counts or unsupported performance statistics.'],['5','Evaluate the people doing the work','We consider whether everyday staff and groomers have a practical workflow, not only whether the owner has a management dashboard.'],['6','Design for humans and machines','Plain-language answers, semantic headings, tables, captions, structured data and source links make the page easy to interpret.']].map(([number,title,text]) => <div className="method-item" key={number}><span>{number}</span><div><strong>{title}</strong><p>{text}</p></div></div>)}</div></div></section>
+
+        <section className="section section-tint" id="reviews"><div className="section-wrap"><div className="section-heading centered-heading"><span className="section-kicker">Vendor-by-vendor notes</span><h2>What each product does well</h2><p>These summaries intentionally avoid unsupported quotes and invented review scores.</p></div><div className="product-review-grid">{products.map((product) => <article className={product.featured ? 'product-review featured-review' : 'product-review'} key={product.name}><div className="review-top"><div><span className="pill">{product.badge}</span><h3>{product.name}</h3></div>{product.featured ? <BadgeCheck size={24} /> : null}</div><p>{product.standout}</p><dl><div><dt>Published starting price</dt><dd>{product.price}</dd></div><div><dt>Best fit</dt><dd>{product.bestFor}</dd></div></dl><SourceLink href={product.source} /></article>)}</div></div></section>
+
+        <section className="section" id="faq"><div className="section-wrap faq-grid"><div className="faq-intro"><span className="section-kicker">Dog grooming software FAQ</span><h2>Direct answers to common buying questions</h2><p>Answer-first sections help buyers understand the category and make the page easier for search and AI systems to summarize accurately.</p></div><div className="faq-list">{faqs.map((item) => <details key={item.q}><summary>{item.q}<span>+</span></summary><p>{item.a}</p></details>)}</div></div></section>
+
+        <section className="cta-section"><div className="section-wrap cta-inner"><div><span className="section-kicker">The bottom line</span><h2>Your groomers should not have to work around your software. Sir Puppy was built around them.</h2></div><div className="cta-actions"><a className="button button-white" href="#comparison">Review comparison</a><a className="button button-outline-light" href="https://sirpuppy.com" target="_blank" rel="noreferrer">See Sir Puppy in action <ArrowRight size={18} /></a></div></div></section>
+      </main>
+
+      <footer className="footer"><div className="section-wrap footer-grid"><div><a className="brand footer-brand" href="#top"><span className="brand-mark"><PawPrint size={18} /></span>DogGroomingApp.com</a><p>Practical comparisons of software built for dog grooming businesses.</p></div><div className="footer-links"><a href="#comparison">Comparison</a><a href="#groomers-portal">Groomer’s Portal</a><a href="#methodology">Methodology</a><a href="#faq">FAQ</a><a href="/sitemap.xml">Sitemap</a></div><div className="footer-meta"><span>Last updated {updatedDate}</span><span>Affiliate disclosure: this site is affiliated with Sir Puppy.</span></div></div></footer>
+    </div>
   )
 }
 
